@@ -13,6 +13,9 @@ const Card = () => {
         <p className="card-text">Product Name</p>
         <p>10$</p>
       </div>
+      <div className="cart-icon">
+        <i className="bx bx-cart fs-4"></i>
+      </div>
     </div>
   );
 };
