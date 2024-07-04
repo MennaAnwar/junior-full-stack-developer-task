@@ -1,0 +1,25 @@
+.test {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(226, 215, 206, 0.6);
+}
+.text {
+  font-family: Arial;
+  font-size: 2em;
+  color: white;
+  text-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
+  margin: 0;
+  position: absolute;
+}
