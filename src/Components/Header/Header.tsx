@@ -1,4 +1,5 @@
 import logo from "../../images/logo.png";
+import CartSummary from "../CartSummary/CartSummary";
 import "./Header.css";
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
         <img src={logo} alt="logo" height="40px" width="40px" />
       </div>
       <div>
-        <i className="bx bx-cart fs-3"></i>
+        <CartSummary />
       </div>
     </div>
   );
