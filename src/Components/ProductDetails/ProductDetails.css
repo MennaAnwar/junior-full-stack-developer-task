@@ -1,0 +1,68 @@
+.picZoomer {
+  position: relative;
+}
+
+.my_img {
+  vertical-align: middle;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 100%;
+}
+.piclist li {
+  display: inline-block;
+  width: 90px;
+  height: 114px;
+  border: 1px solid #eee;
+}
+.piclist li img {
+  width: 97%;
+  height: auto;
+}
+
+section {
+  padding: 60px 0;
+}
+.row-sm .col-md-6 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/*===pic-Zoom===*/
+._boxzoom .zoom-thumb {
+  width: 90px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 0px;
+}
+._boxzoom .zoom-thumb ul.piclist {
+  padding-left: 0px;
+  top: 0px;
+}
+._boxzoom ._product-images {
+  width: 80%;
+  display: inline-block;
+}
+._boxzoom ._product-images .picZoomer {
+  width: 100%;
+}
+
+._boxzoom ._product-images .picZoomer img.my_img {
+  width: 100%;
+}
+.piclist li img {
+  height: 100px;
+  object-fit: cover;
+}
+
+.size ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.size ul li {
+  margin-right: 10px;
+  border: 1px solid grey;
+  padding: 10px;
+}
