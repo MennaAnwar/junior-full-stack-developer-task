@@ -20,9 +20,9 @@ const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log(id);
     const fetchProduct = async () => {
       try {
         const response = await axios.get<Product>(
@@ -61,8 +61,15 @@ const ProductDetails: React.FC = () => {
     }
   };
 
+  const handleClickImage = (image: string) => {
+    setSelectedImage(image);
+  };
+
+  const renderDescriptionAsHTML = (description: string) => {
+    return { __html: description };
+  };
+
   const galleryArray = parseGallery(product.gallery);
-  const firstImage = galleryArray.length > 0 ? galleryArray[0] : "";
 
   return (
     <section id="services" className="services section-bg">
@@ -72,15 +79,23 @@ const ProductDetails: React.FC = () => {
             <div className="zoom-thumb">
               <ul className="piclist">
                 {galleryArray.map((imgSrc, index) => (
-                  <li key={index}>
-                    <img src={imgSrc} alt={`Product image ${index + 1}`} />
+                  <li key={index} onClick={() => handleClickImage(imgSrc)}>
+                    <img
+                      src={imgSrc}
+                      alt={`Product image ${index + 1}`}
+                      className={imgSrc === selectedImage ? "active" : ""}
+                    />
                   </li>
                 ))}
               </ul>
             </div>
             <div className="_product-images">
               <div className="picZoomer">
-                <img className="my_img" src={firstImage} alt="Main product" />
+                <img
+                  className="my_img"
+                  src={selectedImage || galleryArray[0]}
+                  alt="Main product"
+                />
               </div>
             </div>
           </div>
@@ -114,7 +129,11 @@ const ProductDetails: React.FC = () => {
               <button className="btn btn-large btn-success">Add To Cart</button>
             </div>
             <div className="description mt-3">
-              <p>{product.description}</p>
+              <p
+                dangerouslySetInnerHTML={renderDescriptionAsHTML(
+                  product.description
+                )}
+              />
             </div>
           </div>
         </div>
