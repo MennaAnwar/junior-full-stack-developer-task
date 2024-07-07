@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../Card/Card";
+import { Link } from "react-router-dom";
 
 // Define the Product interface
 interface Product {
@@ -84,7 +85,7 @@ const ProductsList: React.FC = () => {
               ? pricesArray[0]
               : { amount: 0, currency: { label: "", symbol: "" } };
 
-          return (
+          const cardComponent = (
             <Card
               key={product.id}
               name={product.name}
@@ -94,6 +95,14 @@ const ProductsList: React.FC = () => {
               currency={firstPrice.currency.symbol}
               img={firstImage}
             />
+          );
+
+          return product.inStock === "1" ? (
+            <Link to={`/${product.id}`} key={product.id}>
+              {cardComponent}
+            </Link>
+          ) : (
+            cardComponent
           );
         })}
       </div>
