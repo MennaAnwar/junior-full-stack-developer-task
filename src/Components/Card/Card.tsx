@@ -12,7 +12,7 @@ interface Product {
 
 const Card: FC<Product> = ({ name, img, price, id, inStock, currency }) => {
   return (
-    <div className="card" style={{ width: "18rem" }} id={id}>
+    <div className="card mx-2 my-2" style={{ width: "18rem" }} id={id}>
       <div className="test">
         <img src={img} className="card-img-top" alt="..." />
         {inStock === "1" ? "" : <h2 className="text">Out Of Stock</h2>}

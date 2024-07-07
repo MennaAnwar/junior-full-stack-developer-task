@@ -73,28 +73,30 @@ const ProductsList: React.FC = () => {
   return (
     <div>
       <h1>Products List</h1>
-      {products.map((product) => {
-        const galleryArray = parseGallery(product.gallery);
-        const firstImage = galleryArray.length > 0 ? galleryArray[0] : "";
+      <div className="d-flex flex-wrap justify-content-center">
+        {products.map((product) => {
+          const galleryArray = parseGallery(product.gallery);
+          const firstImage = galleryArray.length > 0 ? galleryArray[0] : "";
 
-        const pricesArray = parsePrices(product.prices);
-        const firstPrice =
-          pricesArray.length > 0
-            ? pricesArray[0]
-            : { amount: 0, currency: { label: "", symbol: "" } };
+          const pricesArray = parsePrices(product.prices);
+          const firstPrice =
+            pricesArray.length > 0
+              ? pricesArray[0]
+              : { amount: 0, currency: { label: "", symbol: "" } };
 
-        return (
-          <Card
-            key={product.id}
-            name={product.name}
-            id={product.id}
-            inStock={product.inStock}
-            price={firstPrice.amount}
-            currency={firstPrice.currency.symbol}
-            img={firstImage}
-          />
-        );
-      })}
+          return (
+            <Card
+              key={product.id}
+              name={product.name}
+              id={product.id}
+              inStock={product.inStock}
+              price={firstPrice.amount}
+              currency={firstPrice.currency.symbol}
+              img={firstImage}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
